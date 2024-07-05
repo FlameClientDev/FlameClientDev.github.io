@@ -1,0 +1,151 @@
+/* Reset default browser styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth; /* Smooth scrolling behavior */
+}
+
+/* Body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern sans-serif font */
+    background-color: #090909;
+    color: #f5dad1;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px; /* Increased max-width for larger screens */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #090909;
+    color: #f5dad1;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000; /* Ensure it's above other content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.navbar ul li {
+    display: inline-block; /* Use inline-block for better alignment */
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    color: #f5dad1;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+    font-weight: bold; /* Enhance readability */
+}
+
+.navbar ul li a:hover {
+    color: #af1313;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    padding: 150px 0; /* Increased padding for a grand entrance */
+    background-image: linear-gradient(to bottom, rgba(9, 9, 9, 0.8), rgba(9, 9, 9, 0.6)), url('path/to/your/image.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #f5dad1;
+}
+
+header h1 {
+    font-size: 4.5em; /* Larger heading for impact */
+    margin-bottom: 30px; /* More space around the heading */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
+}
+
+/* Section styles */
+.section {
+    padding: 100px 0; /* Reduced padding for sleek sections */
+    background-color: #1a1a1a; /* Darker background for sections */
+    color: #f5dad1;
+}
+
+.section h2 {
+    font-size: 2.5em; /* Larger section headings */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section p {
+    font-size: 1.1em; /* Larger paragraph text */
+    line-height: 1.8; /* Improved readability */
+    margin-bottom: 30px;
+}
+
+/* Article styles */
+.article {
+    padding: 50px 20px;
+    background-color: #121212;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.article h3 {
+    color: #af1313;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.article p {
+    color: #a7a3b4;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+/* Button styles */
+.button {
+    background-color: #af1313;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #a7a3b4;
+}
+
+/* Footer styles */
+footer {
+    background-color: #090909;
+    color: #f5dad1;
+    text-align: center;
+    padding: 30px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    font-size: 0.9em;
+    box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.2);
+}
