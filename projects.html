@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlameClientDev - Projects</title>
+    <style>
+        /* Reset default browser styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth; /* Smooth scrolling behavior */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern sans-serif font */
+            background-color: #090909;
+            color: #f5dad1;
+            line-height: 1.6;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 1200px; /* Limit content width */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #090909;
+            color: #f5dad1;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000; /* Ensure it's above other content */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .navbar ul li {
+            display: inline-block; /* Use inline-block for better alignment */
+            margin-right: 20px;
+        }
+
+        .navbar ul li a {
+            color: #f5dad1;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+            font-weight: bold; /* Enhance readability */
+        }
+
+        .navbar ul li a:hover {
+            color: #af1313;
+        }
+
+        /* Project card styles */
+        .project {
+            background-color: #282828; /* Dark background for project cards */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .project h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: #a7a3b4; /* Lighter text color */
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .project a {
+            color: #af1313; /* GitHub link color */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .project a:hover {
+            color: #f5dad1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="https://github.com/FlameClientDev" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section projects-list" id="projects">
+        <div class="container" id="projectsContainer">
+            <!-- Dynamic projects will be inserted here -->
+        </div>
+    </section>
+
+    <script>
+        // Function to fetch repositories from GitHub API
+        async function fetchRepositories(username) {
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}/repos`);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch repositories for ${username}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching repositories:', error);
+                return [];
+            }
+        }
+
+        // Function to display repositories as project cards
+        async function displayRepositories(username) {
+            const repositories = await fetchRepositories(username);
+
+            const projectsContainer = document.getElementById('projectsContainer');
+            projectsContainer.innerHTML = ''; // Clear previous content
+
+            repositories.forEach(repo => {
+                const projectElement = document.createElement('div');
+                projectElement.classList.add('project');
+
+                const projectName = document.createElement('h3');
+                projectName.textContent = repo.name;
+
+                const projectDescription = document.createElement('p');
+                projectDescription.textContent = repo.description || 'No description provided';
+
+                const projectLink = document.createElement('a');
+                projectLink.href = repo.html_url;
+                projectLink.textContent = 'View on GitHub';
+                projectLink.target = '_blank';
+
+                projectElement.appendChild(projectName);
+                projectElement.appendChild(projectDescription);
+                projectElement.appendChild(projectLink);
+
+                projectsContainer.appendChild(projectElement);
+            });
+        }
+
+        // Call displayRepositories with your GitHub username 'FlameClientDev'
+        displayRepositories('FlameClientDev');
+    </script>
+</body>
+</html>
